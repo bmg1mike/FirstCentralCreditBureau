@@ -3,6 +3,7 @@ using Domain.Enums;
 using Newtonsoft.Json;
 using Domain.DTOs;
 using Domain.Interfaces.Services;
+using System.Text;
 
 namespace Service.Implementation
 {
@@ -26,7 +27,6 @@ namespace Service.Implementation
                 client.DefaultRequestHeaders.Clear();
                 var requestMessage = new HttpRequestMessage();
                 requestMessage.RequestUri = new Uri(url);
-                requestMessage.Headers.Add("Accept", "application/json");
                 HttpResponseMessage? apiResponse = null;
                 switch (apiType)
                 {
@@ -43,10 +43,19 @@ namespace Service.Implementation
                         requestMessage.Method = HttpMethod.Get;
                         break;
                 }
+                if (request is not null)
+                {
+                    requestMessage.Content = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
+                }
                 apiResponse = await client.SendAsync(requestMessage);
 
                 var apiContent = await apiResponse.Content.ReadAsStringAsync();
                 _logger.LogInformation($"Response from {url} {apiContent}");
+                if (apiContent.StartsWith('['))
+                {
+                    apiContent.Remove(0, 1);
+                    apiContent.Remove(apiContent.Length - 1, 1);
+                }
                 var apiResponseDto = JsonConvert.DeserializeObject<T>(apiContent);
                 return apiResponseDto;
             }

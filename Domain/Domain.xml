@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Domain</name>
+    </assembly>
+    <members>
+        <member name="T:Domain.DTOs.ConnectCommercialMatchRequest">
+            <summary>
+            This is the  Commercial Match Request Class
+            </summary>
+        </member>
+        <member name="P:Domain.DTOs.ConnectCommercialMatchRequest.DataTicket">
+            <value>12345678</value>
+        </member>
+        <member name="P:Domain.DTOs.ConnectCommercialMatchRequest.EnquiryReason">
+            <value>Hello</value>
+        </member>
+        <member name="P:Domain.DTOs.ConnectCommercialMatchRequest.BusinessName">
+            <value>12345678</value>
+        </member>
+        <member name="P:Domain.DTOs.ConnectCommercialMatchRequest.BusinessRegistrationNumber">
+            <value>12345678</value>
+        </member>
+        <member name="P:Domain.DTOs.ConnectCommercialMatchRequest.AccountNumber">
+            <value>12345678</value>
+        </member>
+        <member name="P:Domain.DTOs.ConnectCommercialMatchRequest.ProductID">
+            <value>12345678</value>
+        </member>
+    </members>
+</doc>
