@@ -10,4 +10,7 @@ public interface IFirstCentralCreditBureauService
     Task<ResponseDto> ConsumerBasicCredit(ConsumerReportRequest request);
     Task<ResponseDto> ConsumerBasicTrace(ConsumerReportRequest request);
     Task<ResponseDto> ConsumerFullCredit(ConsumerReportRequest request);
+    Task<ResponseDto> ConsumerPrime(ConsumerReportRequest request);
+    Task<ResponseDto> XScoreConsumerFullCredit(ConsumerReportRequest request);
+    Task<ResponseDto> XScoreConsumerPrimeReport(ConsumerReportRequest request);
 }

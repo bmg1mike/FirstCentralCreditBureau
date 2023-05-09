@@ -255,5 +255,140 @@ public class FirstCentralCreditBureauService : IFirstCentralCreditBureauService
             throw;
         }
     }
+    public async Task<ResponseDto> ConsumerPrime(ConsumerReportRequest request)
+    {
+        try
+        {
+            var url = $"{_config["FirstCentralCreditBureau:BaseUrl"]}/ConsumerPrime";
+            var result = await _baseService.SendAsync<List<ConsumerPrimeResponse>>(url, request, ApiType.Post);
+
+            if (result is null || result.Count == 0)
+            {
+                return new ResponseDto
+                {
+                    DisplayMessage = "There was an error, please try again later",
+                    ErrorMessages = new List<string>(),
+                    IsSuccess = false,
+                    Result = null
+                };
+            }
+            var response = new
+            {
+                subjectList = result[0].SubjectList,
+                personalDetailsSummary = result[1].PersonalDetailsSummary,
+                creditSummary = result[2].CreditSummary,
+                performanceClassification = result[3].PerformanceClassification,
+                enquiryDetails = result[4].EnquiryDetails
+            };
+            return new ResponseDto
+            {
+                IsSuccess = true,
+                ErrorMessages = new List<string>(),
+                DisplayMessage = "Success",
+                Result = response
+            };
+
+        }
+        catch (System.Exception)
+        {
+
+            throw;
+        }
+    }
+    public async Task<ResponseDto> XScoreConsumerFullCredit(ConsumerReportRequest request)
+    {
+        try
+        {
+            var url = $"{_config["FirstCentralCreditBureau:BaseUrl"]}/XScoreConsumerFullCredit";
+            var result = await _baseService.SendAsync<List<XScoreConsumerFullCreditResponse>>(url, request, ApiType.Post);
+
+            if (result is null || result.Count == 0)
+            {
+                return new ResponseDto
+                {
+                    DisplayMessage = "There was an error, please try again later",
+                    ErrorMessages = new List<string>(),
+                    IsSuccess = false,
+                    Result = null
+                };
+            }
+            var response = new
+            {
+                subjectList = result[0].SubjectList,
+                scoring = result[1].Scoring,
+                personalDetailsSummary = result[2].PersonalDetailsSummary,
+                deliquencyInformation = result[3].DeliquencyInformation,
+                creditAccountSummary = result[4].CreditAccountSummary,
+                creditAccountRating = result[5].CreditAccountRating,
+                creditAgreementSummary = result[6].CreditAgreementSummary,
+                accountMonthlyPaymentHistoryHeader = result[7].AccountMonthlyPaymentHistoryHeader,
+                accountMonthlyPaymentHistory = result[8].AccountMonthlyPaymentHistory,
+                guarantorCount = result[9].GuarantorCount,
+                guarantorDetails = result[10].GuarantorDetails,
+                companyDirectorSummary = result[11].CompanyDirectorSummary,
+                enquiryHistoryTop = result[12].EnquiryHistoryTop,
+                identificationHistory = result[13].IdentificationHistory,
+                addressHistory = result[14].AddressHistory,
+                employmentHistory = result[15].EmploymentHistory,
+                telephoneHistory = result[16].TelephoneHistory,
+                enquiryInput = result[17].EnquiryInput,
+                enquiryDetails = result[18].EnquiryDetails
+            };
+            return new ResponseDto
+            {
+                IsSuccess = true,
+                ErrorMessages = new List<string>(),
+                DisplayMessage = "Success",
+                Result = response
+            };
+
+        }
+        catch (System.Exception)
+        {
+
+            throw;
+        }
+    }
+    public async Task<ResponseDto> XScoreConsumerPrimeReport(ConsumerReportRequest request)
+    {
+        try
+        {
+            var url = $"{_config["FirstCentralCreditBureau:BaseUrl"]}/XScoreConsumerPrimeReport";
+            var result = await _baseService.SendAsync<List<XScoreConsumerPrimeReportResponse>>(url, request, ApiType.Post);
+
+            if (result is null || result.Count == 0)
+            {
+                return new ResponseDto
+                {
+                    DisplayMessage = "There was an error, please try again later",
+                    ErrorMessages = new List<string>(),
+                    IsSuccess = false,
+                    Result = null
+                };
+            }
+            var response = new
+            {
+                subjectList = result[0].SubjectList,
+                personalDetailsSummary = result[1].PersonalDetailsSummary,
+                scoring = result[2].Scoring,
+                creditSummary = result[3].CreditSummary,
+                performanceClassification = result[4].PerformanceClassification,
+                enquiryDetails = result[5].EnquiryDetails
+            };
+            return new ResponseDto
+            {
+                IsSuccess = true,
+                ErrorMessages = new List<string>(),
+                DisplayMessage = "Success",
+                Result = response
+            };
+
+        }
+        catch (System.Exception)
+        {
+
+            throw;
+        }
+    }
 
 }
