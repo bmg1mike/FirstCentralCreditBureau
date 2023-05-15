@@ -123,4 +123,14 @@ public class FirstCentralCreditBureauController : ControllerBase
     {
         return Ok(await _service.XScoreConsumerPrimeReport(request));
     }
+    [HttpPost("ConsumerEnquiry")]
+    public async Task<IActionResult> ConsumerEnquiry(ConsumerEnquiryRequest request)
+    {
+        return Ok(await _service.ConsumerEnquiry(request));
+    }
+    [HttpPost("CommercialEnquiry")]
+    public async Task<IActionResult> CommercialEnquiry(CommercialEnquiryRequest request)
+    {
+        return Ok(await _service.CommercialEnquiry(request));
+    }
 }

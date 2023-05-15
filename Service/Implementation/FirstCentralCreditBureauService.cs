@@ -391,4 +391,90 @@ public class FirstCentralCreditBureauService : IFirstCentralCreditBureauService
         }
     }
 
+    public async Task<ResponseDto> ConsumerEnquiry(ConsumerEnquiryRequest request)
+    {
+        try
+        {
+            var url = $"{_config["FirstCentralCreditBureau:BaseUrl"]}/ConsumerEnquiry";
+            var result = await _baseService.SendAsync<List<ConsumerEnquiryResponse>>(url, request, ApiType.Post);
+
+            if (result is null || result.Count == 0)
+            {
+                return new ResponseDto
+                {
+                    DisplayMessage = "There was an error, please try again later",
+                    ErrorMessages = new List<string>(),
+                    IsSuccess = false,
+                    Result = null
+                };
+            }
+            var response = new
+            {
+                subjectList = result[0].SubjectList,
+                personalDetailsSummary = result[1].PersonalDetailsSummary,
+                identificationHistory = result[2].IdentificationHistory,
+                addressHistory = result[3].AddressHistory,
+                employmentHistory = result[4].EmploymentHistory,
+                telephoneHistory = result[5].TelephoneHistory
+            };
+            return new ResponseDto
+            {
+                IsSuccess = true,
+                ErrorMessages = new List<string>(),
+                DisplayMessage = "Success",
+                Result = response
+            };
+
+        }
+        catch (System.Exception)
+        {
+
+            throw;
+        }
+    }
+    public async Task<ResponseDto> CommercialEnquiry(CommercialEnquiryRequest request)
+    {
+        try
+        {
+            var url = $"{_config["FirstCentralCreditBureau:BaseUrl"]}/CommercialEnquiry";
+            var result = await _baseService.SendAsync<List<CommercialEnquiryResponse>>(url, request, ApiType.Post);
+
+            if (result is null || result.Count == 0)
+            {
+                return new ResponseDto
+                {
+                    DisplayMessage = "There was an error, please try again later",
+                    ErrorMessages = new List<string>(),
+                    IsSuccess = false,
+                    Result = null
+                };
+            }
+            var response = new
+            {
+                subjectList = result[0].SubjectList,
+                businessData = result[1].BusinessData,
+                highestDelinquencyRating = result[2].HighestDelinquencyRating,
+                facilityPerformanceSummary = result[3].FacilityPerformanceSummary,
+                directorInformation = result[4].DirectorInformation,
+                creditAgreementSummary = result[5].CreditAgreementSummary,
+                accountMonthlyPaymentHistoryHeader = result[6].AccountMonthlyPaymentHistoryHeader,
+                accountMonthlyPaymentHistory = result[7].AccountMonthlyPaymentHistory,
+                addressHistory = result[8].AddressHistory
+            };
+            return new ResponseDto
+            {
+                IsSuccess = true,
+                ErrorMessages = new List<string>(),
+                DisplayMessage = "Success",
+                Result = response
+            };
+
+        }
+        catch (System.Exception)
+        {
+
+            throw;
+        }
+    }
+
 }
