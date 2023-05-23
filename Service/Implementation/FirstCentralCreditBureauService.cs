@@ -477,4 +477,93 @@ public class FirstCentralCreditBureauService : IFirstCentralCreditBureauService
         }
     }
 
+    public async Task<ResponseDto> CommercialFullCredit(CommercialReportRequest request)
+    {
+        try
+        {
+            var url = $"{_config["FirstCentralCreditBureau:BaseUrl"]}/CommercialFullCredit";
+            var result = await _baseService.SendAsync<List<CommercialFullCreditResponse>>(url, request, ApiType.Post);
+
+            if (result is null || result.Count == 0)
+            {
+                return new ResponseDto
+                {
+                    DisplayMessage = "There was an error, please try again later",
+                    ErrorMessages = new List<string>(),
+                    IsSuccess = false,
+                    Result = null
+                };
+            }
+            var response = new
+            {
+                subjectList = result[0].SubjectList,
+                businessData = result[1].BusinessData,
+                highestDelinquencyRating = result[2].HighestDelinquencyRating,
+                facilityPerformanceSummary = result[3].FacilityPerformanceSummary,
+                directorInformation = result[4].DirectorInformation,
+                creditAgreementSummary = result[5].CreditAgreementSummary,
+                accountMonthlyPaymentHistoryHeader = result[6].AccountMonthlyPaymentHistoryHeader,
+                accountMonthlyPaymentHistory = result[7].AccountMonthlyPaymentHistory,
+                addressHistory = result[8].AddressHistory,
+                additionalContactHistory = result[9].AdditionalContactHistory,
+                enquiryHistoryTop = result[10].EnquiryHistoryTop,
+                enquiryDetails = result[11].EnquiryDetails
+            };
+            return new ResponseDto
+            {
+                IsSuccess = true,
+                ErrorMessages = new List<string>(),
+                DisplayMessage = "Success",
+                Result = response
+            };
+
+        }
+        catch (System.Exception)
+        {
+
+            throw;
+        }
+    }
+    public async Task<ResponseDto> CommercialBasicCredit(CommercialReportRequest request)
+    {
+        try
+        {
+            var url = $"{_config["FirstCentralCreditBureau:BaseUrl"]}/CommercialBasicCredit";
+            var result = await _baseService.SendAsync<List<CommercialBasicCreditResponse>>(url, request, ApiType.Post);
+
+            if (result is null || result.Count == 0)
+            {
+                return new ResponseDto
+                {
+                    DisplayMessage = "There was an error, please try again later",
+                    ErrorMessages = new List<string>(),
+                    IsSuccess = false,
+                    Result = null
+                };
+            }
+            var response = new
+            {
+                subjectList = result[0].SubjectList,
+                businessData = result[1].BusinessData,
+                directorInformation = result[2].DirectorInformation,
+                facilityPerformanceSummary = result[3].FacilityPerformanceSummary,
+                highestDelinquencyRating = result[4].HighestDelinquencyRating,
+                enquiryDetails = result[5].EnquiryDetails
+            };
+            return new ResponseDto
+            {
+                IsSuccess = true,
+                ErrorMessages = new List<string>(),
+                DisplayMessage = "Success",
+                Result = response
+            };
+
+        }
+        catch (System.Exception)
+        {
+
+            throw;
+        }
+    }
+
 }

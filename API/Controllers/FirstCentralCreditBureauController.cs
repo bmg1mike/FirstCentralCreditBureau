@@ -133,4 +133,16 @@ public class FirstCentralCreditBureauController : ControllerBase
     {
         return Ok(await _service.CommercialEnquiry(request));
     }
+
+    [HttpPost("CommercialFullCredit")]
+    public async Task<IActionResult> CommercialFullCredit(CommercialReportRequest request)
+    {
+        return Ok(await _service.CommercialFullCredit(request));
+    }
+
+    [HttpPost("CommercialBasicCredit")]
+    public async Task<IActionResult> CommercialBasicCredit(CommercialReportRequest request)
+    {
+        return Ok(await _service.CommercialBasicCredit(request));
+    }
 }

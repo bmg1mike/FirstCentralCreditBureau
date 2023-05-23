@@ -15,4 +15,6 @@ public interface IFirstCentralCreditBureauService
     Task<ResponseDto> XScoreConsumerPrimeReport(ConsumerReportRequest request);
     Task<ResponseDto> ConsumerEnquiry(ConsumerEnquiryRequest request);
     Task<ResponseDto> CommercialEnquiry(CommercialEnquiryRequest request);
+    Task<ResponseDto> CommercialFullCredit(CommercialReportRequest request);
+    Task<ResponseDto> CommercialBasicCredit(CommercialReportRequest request);
 }
