@@ -2,6 +2,7 @@ namespace Domain.DTOs;
 
 public class CommercialReportRequest
 {
+    public string RequestId { get; set; }
     public string DataTicket { get; set; }
     public string commercialID { get; set; }
     public string EnquiryID { get; set; }

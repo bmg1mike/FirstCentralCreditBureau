@@ -1,19 +1,11 @@
 namespace Domain.DTOs;
-/// <summary>
-/// This is the  Commercial Match Request Class
-/// </summary>
 public class ConnectCommercialMatchRequest
 {
-    /// <value>12345678</value>
-    public string? DataTicket { get; set; }
-    /// <value>Hello</value>
-    public string? EnquiryReason { get; set; }
-    /// <value>12345678</value>
-    public string? BusinessName { get; set; }
-    /// <value>12345678</value>
-    public string? BusinessRegistrationNumber { get; set; }
-    /// <value>12345678</value>
-    public string? AccountNumber { get; set; }
-    /// <value>12345678</value>
-    public string? ProductID { get; set; }
+    public string RequestId { get; set; }
+    public string DataTicket { get; set; }
+    public string EnquiryReason { get; set; }
+    public string BusinessName { get; set; }
+    public string BusinessRegistrationNumber { get; set; }
+    public string AccountNumber { get; set; }
+    public string ProductID { get; set; }
 }

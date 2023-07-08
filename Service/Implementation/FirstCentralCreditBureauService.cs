@@ -48,10 +48,16 @@ public class FirstCentralCreditBureauService : IFirstCentralCreditBureauService
                 Result = result[0]
             };
         }
-        catch (System.Exception)
+        catch (Exception ex)
         {
-
-            throw;
+            _logger.LogError(ex, ex.Message);
+            return new ResponseDto
+            {
+                IsSuccess = false,
+                ErrorMessages = new List<string>() {"An Error occurred while processing"},
+                DisplayMessage = "Failed",
+                Result = null
+            };
         }
     }
 
@@ -81,10 +87,16 @@ public class FirstCentralCreditBureauService : IFirstCentralCreditBureauService
             };
 
         }
-        catch (System.Exception)
+        catch (Exception ex)
         {
-
-            throw;
+            _logger.LogError(ex, ex.Message);
+            return new ResponseDto
+            {
+                IsSuccess = false,
+                ErrorMessages = new List<string>() {"An Error occurred while processing"},
+                DisplayMessage = "Failed",
+                Result = null
+            };
         }
     }
 
@@ -114,10 +126,16 @@ public class FirstCentralCreditBureauService : IFirstCentralCreditBureauService
             };
 
         }
-        catch (System.Exception)
+        catch (Exception ex)
         {
-
-            throw;
+            _logger.LogError(ex, ex.Message);
+            return new ResponseDto
+            {
+                IsSuccess = false,
+                ErrorMessages = new List<string>() {"An Error occurred while processing"},
+                DisplayMessage = "Failed",
+                Result = null
+            };
         }
     }
 
@@ -155,10 +173,16 @@ public class FirstCentralCreditBureauService : IFirstCentralCreditBureauService
             };
 
         }
-        catch (System.Exception)
+        catch (Exception ex)
         {
-
-            throw;
+            _logger.LogError(ex, ex.Message);
+            return new ResponseDto
+            {
+                IsSuccess = false,
+                ErrorMessages = new List<string>() {"An Error occurred while processing"},
+                DisplayMessage = "Failed",
+                Result = null
+            };
         }
     }
     public async Task<ResponseDto> ConsumerBasicTrace(ConsumerReportRequest request)
@@ -198,10 +222,16 @@ public class FirstCentralCreditBureauService : IFirstCentralCreditBureauService
             };
 
         }
-        catch (System.Exception)
+        catch (Exception ex)
         {
-
-            throw;
+            _logger.LogError(ex, ex.Message);
+            return new ResponseDto
+            {
+                IsSuccess = false,
+                ErrorMessages = new List<string>() {"An Error occurred while processing"},
+                DisplayMessage = "Failed",
+                Result = null
+            };
         }
     }
     public async Task<ResponseDto> ConsumerFullCredit(ConsumerReportRequest request)
@@ -249,10 +279,16 @@ public class FirstCentralCreditBureauService : IFirstCentralCreditBureauService
             };
 
         }
-        catch (System.Exception)
+        catch (Exception ex)
         {
-
-            throw;
+            _logger.LogError(ex, ex.Message);
+            return new ResponseDto
+            {
+                IsSuccess = false,
+                ErrorMessages = new List<string>() {"An Error occurred while processing"},
+                DisplayMessage = "Failed",
+                Result = null
+            };
         }
     }
     public async Task<ResponseDto> ConsumerPrime(ConsumerReportRequest request)
@@ -289,10 +325,16 @@ public class FirstCentralCreditBureauService : IFirstCentralCreditBureauService
             };
 
         }
-        catch (System.Exception)
+        catch (Exception ex)
         {
-
-            throw;
+            _logger.LogError(ex, ex.Message);
+            return new ResponseDto
+            {
+                IsSuccess = false,
+                ErrorMessages = new List<string>() {"An Error occurred while processing"},
+                DisplayMessage = "Failed",
+                Result = null
+            };
         }
     }
     public async Task<ResponseDto> XScoreConsumerFullCredit(ConsumerReportRequest request)
@@ -338,15 +380,21 @@ public class FirstCentralCreditBureauService : IFirstCentralCreditBureauService
             {
                 IsSuccess = true,
                 ErrorMessages = new List<string>(),
-                DisplayMessage = "Success",
+                DisplayMessage = "Failed",
                 Result = response
             };
 
         }
-        catch (System.Exception)
+        catch (Exception ex)
         {
-
-            throw;
+            _logger.LogError(ex, ex.Message);
+            return new ResponseDto
+            {
+                IsSuccess = false,
+                ErrorMessages = new List<string>() {"An Error occurred while processing"},
+                DisplayMessage = "Failed",
+                Result = null
+            };
         }
     }
     public async Task<ResponseDto> XScoreConsumerPrimeReport(ConsumerReportRequest request)

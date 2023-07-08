@@ -1,3 +1,4 @@
+using Microsoft.OpenApi.Models;
 using Serilog;
 using Service;
 
@@ -16,7 +17,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(x =>
 {
-    x.IncludeXmlComments("API.xml");
+    x.SwaggerDoc("v1", new OpenApiInfo { Title = "FirstCentralCreditBureau Microservice", Version = "v1" });
+    // x.IncludeXmlComments("API.xml");
 });
 
 var app = builder.Build();

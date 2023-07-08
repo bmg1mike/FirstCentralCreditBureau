@@ -3,7 +3,7 @@ namespace Domain.DTOs
     public class CommercialFullCreditResponse
     {
         public List<SubjectList> SubjectList { get; set; }
-        public List<BusinessDatum> BusinessData { get; set; }
+        public required List<BusinessDatum> BusinessData { get; set; }
         public List<HighestDelinquencyRating> HighestDelinquencyRating { get; set; }
         public List<FacilityPerformanceSummary> FacilityPerformanceSummary { get; set; }
         public List<DirectorInformation> DirectorInformation { get; set; }
