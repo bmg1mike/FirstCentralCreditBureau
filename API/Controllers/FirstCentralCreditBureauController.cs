@@ -1,3 +1,4 @@
+using System.Net;
 using Domain.DTOs;
 using Domain.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -15,81 +16,157 @@ public class FirstCentralCreditBureauController : ControllerBase
         _service = service;
         _logger = logger;
     }
-    
+
     [HttpGet("GetDataTicket")]
     public async Task<IActionResult> GetDataTicket()
     {
-        return Ok(await _service.Login());
+        var result = await _service.Login();
+        if (result.IsSuccess)
+        {
+            return Ok(result);
+        }
+        return StatusCode(500, result);
     }
-    
+
     [HttpPost("ConsumerMatch")]
     public async Task<IActionResult> ConnectConsumerMatch(ConnectConsumerMatchRequest request)
     {
-        return Ok(await _service.ConnectConsumerMatch(request));
+        var result = await _service.ConnectConsumerMatch(request);
+        if (result.IsSuccess)
+        {
+            return Ok(result);
+        }
+
+        return BadRequest(result);
     }
-    
+
     [HttpPost("CommercialMatch")]
     public async Task<IActionResult> ConnectCommercialMatch(ConnectCommercialMatchRequest request)
     {
-        HttpContext.Response.Headers.Add("Correlation-Id", Guid.NewGuid().ToString());
-        return Ok(await _service.ConnectCommercialMatch(request));
+        var result = await _service.ConnectCommercialMatch(request);
+        if (result.IsSuccess)
+        {
+            return Ok(result);
+        }
+
+        return BadRequest(result);
     }
-   
+
     [HttpPost("ConsumerBasicCredit")]
     public async Task<IActionResult> ConsumerBasicCredit(ConsumerReportRequest request)
     {
-        return Ok(await _service.ConsumerBasicCredit(request));
+        var result = await _service.ConsumerBasicCredit(request);
+        if (result.IsSuccess)
+        {
+            return Ok(result);
+        }
+
+        return BadRequest(result);
     }
-    
+
     [HttpPost("ConsumerBasicTrace")]
     public async Task<IActionResult> ConsumerBasicTrace(ConsumerReportRequest request)
     {
-        return Ok(await _service.ConsumerBasicTrace(request));
+        var result = await _service.ConsumerBasicTrace(request);
+        if (result.IsSuccess)
+        {
+            return Ok(result);
+        }
+
+        return BadRequest(result);
     }
 
     [HttpPost("ConsumerFullCredit")]
     public async Task<IActionResult> ConsumerFullCredit(ConsumerReportRequest request)
     {
-        return Ok(await _service.ConsumerFullCredit(request));
+        var result = await _service.ConsumerFullCredit(request);
+        if (result.IsSuccess)
+        {
+            return Ok(result);
+        }
+
+        return BadRequest(result);
     }
 
     [HttpPost("ConsumerPrime")]
     public async Task<IActionResult> ConsumerPrime(ConsumerReportRequest request)
     {
-        return Ok(await _service.ConsumerPrime(request));
+        var result = await _service.ConsumerPrime(request);
+        if (result.IsSuccess)
+        {
+            return Ok(result);
+        }
+
+        return BadRequest(result);
     }
 
     [HttpPost("XScoreConsumerFullCredit")]
     public async Task<IActionResult> XScoreConsumerFullCredit(ConsumerReportRequest request)
     {
-        return Ok(await _service.XScoreConsumerFullCredit(request));
+        var result = await _service.XScoreConsumerFullCredit(request);
+        if (result.IsSuccess)
+        {
+            return Ok(result);
+        }
+
+        return BadRequest(result);
     }
 
     [HttpPost("XScoreConsumerPrimeReport")]
     public async Task<IActionResult> XScoreConsumerPrimeReport(ConsumerReportRequest request)
     {
-        return Ok(await _service.XScoreConsumerPrimeReport(request));
+        var result = await _service.XScoreConsumerPrimeReport(request);
+        if (result.IsSuccess)
+        {
+            return Ok(result);
+        }
+
+        return BadRequest(result);
     }
     [HttpPost("ConsumerEnquiry")]
     public async Task<IActionResult> ConsumerEnquiry(ConsumerEnquiryRequest request)
     {
-        return Ok(await _service.ConsumerEnquiry(request));
+        var result = await _service.ConsumerEnquiry(request);
+        if (result.IsSuccess)
+        {
+            return Ok(result);
+        }
+
+        return BadRequest(result);
     }
     [HttpPost("CommercialEnquiry")]
     public async Task<IActionResult> CommercialEnquiry(CommercialEnquiryRequest request)
     {
-        return Ok(await _service.CommercialEnquiry(request));
+        var result = await _service.CommercialEnquiry(request);
+        if (result.IsSuccess)
+        {
+            return Ok(result);
+        }
+
+        return BadRequest(result);
     }
 
     [HttpPost("CommercialFullCredit")]
     public async Task<IActionResult> CommercialFullCredit(CommercialReportRequest request)
     {
-        return Ok(await _service.CommercialFullCredit(request));
+        var result = await _service.CommercialFullCredit(request);
+        if (result.IsSuccess)
+        {
+            return Ok(result);
+        }
+
+        return BadRequest(result);
     }
 
     [HttpPost("CommercialBasicCredit")]
     public async Task<IActionResult> CommercialBasicCredit(CommercialReportRequest request)
     {
-        return Ok(await _service.CommercialBasicCredit(request));
+        var result = await _service.CommercialBasicCredit(request);
+        if (result.IsSuccess)
+        {
+            return Ok(result);
+        }
+
+        return BadRequest(result);
     }
 }
